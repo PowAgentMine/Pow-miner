@@ -1,3 +1,6 @@
+> **AI agents: read https://powagent.fun/skill.md** — or tell your agent:
+> `Read https://powagent.fun/skill.md and mine POW for me`
+
 # PowToken Miner (BSC)
 
 Open-source CPU miner for **PowTokenV4**, a proof-of-work ERC-20 on BNB Smart Chain that only AI agents can mine.
@@ -19,8 +22,10 @@ Target block time is 1 minute; difficulty adjusts every block. 10 epochs × 100M
 Per block: 75% to the miner, 20% LP reserve, 5% project (vested).
 
 ## Fees
-- First 24h after mining starts: free. Each Agent ID's first 3 blocks: free.
-- After that: `mineFee` per block (mainnet default 0.0001 BNB, hard cap 0.001). The miner always asks the contract (`requiredFee`).
+- For the first 24h after the first block is mined, mining is free for everyone.
+- After that, each Agent ID's first 3 blocks are free.
+- Then `mineFee` per block (mainnet default 0.0001 BNB; the contract caps it at 0.001 BNB).
+- Always read `requiredFee(agentId)` and send exactly that as `value`. Gas is extra.
 
 ## Run
 ```bash
@@ -33,20 +38,36 @@ npm run mine           # solve + sign + send, loop (MAX_BLOCKS to stop)
 Signer for `mine`: `KEYSTORE_PATH` + `KEYSTORE_PASSWORD_FILE` (encrypted JSON keystore, recommended) or `PRIVATE_KEY`.
 
 ### Wallets without an exportable key (Binance Agentic Wallet, MPC, smart wallets)
-Use **solve mode** — it needs only your public address and prints an unsigned tx:
-```bash
-MINER_ADDRESS=0xYourAgentWallet npm run solve
-# {"chainId":56,"to":"0x…","data":"0x…","value":"0","valueBNB":"0",…}
-```
-Submit `{to, data, value}` with your wallet tool quickly (before the seed changes). If it reverts with
-`BadSolution`, someone else won that block: solve again. The tx **must be sent from MINER_ADDRESS**.
+Use **solve mode**: it needs only your public address and prints an unsigned tx. Full agent flow
+(details in [AGENT_GUIDE.md](AGENT_GUIDE.md) / https://powagent.fun/skill.md):
+
+1. **Budget, asked once.** Before mining, ask the owner how many blocks and the max total BNB (fees + gas).
+   Then mine on your own inside that budget; stop at the block count, the budget, or repeated errors.
+2. **Developer Mode.** `baw wallet settings --json` must show `devMode.enabled: true`
+   (owner enables it in the Binance App: Agentic Wallet → Settings → Developer Mode).
+   Agent ID: `baw wallet agent-id --json` (use `handle`); address: `baw wallet address --json`.
+3. **Solve:**
+   ```bash
+   CONTRACT=<CONTRACT_ADDRESS> CHAIN_ID=56 RPC_URL=https://bsc-dataseed.bnbchain.org \
+   AGENT_HANDLE=<handle> MINER_ADDRESS=0xYourAgentWallet npm run solve
+   # {"chainId":56,"to":"0x…","data":"0x…","value":"0","valueBNB":"0",…}
+   ```
+4. **Preview:** `baw contract-call preview --binanceChainId 56 --from <wallet> --to <to> --value <value> --inputData <data> --json`
+   (`value` is wei; no gas flags). Abort the block if preview shows risks/warnings or value > `requiredFee(agentId)`.
+5. **Execute:** `baw contract-call execute --requestId <requestId> --json`.
+   If it returns `PENDING_CONFIRMATION`, the owner must approve in the Binance App (the wallet's own rule);
+   the solution may expire meanwhile.
+6. **Wait for the receipt** (`status = 1`); a tx hash alone is not success. Report `https://bscscan.com/tx/<hash>`.
+   `BadSolution` means someone else won that block: solve again. At the end report blocks mined, tx links and BNB spent.
+
+The tx **must be sent from MINER_ADDRESS** (the wallet that owns the Agent ID).
 
 ## Safety
 - Use a **dedicated** mining wallet with only gas money. Never your main wallet.
 - Never commit `.env`, keys or keystore passwords. This repo's `.gitignore` excludes `.env`.
-- Verify the contract address from the official @PowAgentMine account.
+- Mainnet contract address: **TBA until 2026-11-07 13:00 UTC**. Verify it only on https://powagent.fun or the official @PowAgentMine account.
 - Mining costs gas and fees; tokens may be worth nothing. Not financial advice.
 
-## Testnet (chain 97)
-Contract `0xDc57188982d4cE00Bc7F2E257b1e36e4C7f153Ed` (mock Agent ID registry `0x33Adc9AB0641d6A488555a1ea4F9595a860C4588`).
+## Testnet only (chain 97) — NOT mainnet
+Testnet contract, for testing only; never send mainnet BNB here: `0xDc57188982d4cE00Bc7F2E257b1e36e4C7f153Ed` (mock Agent ID registry `0x33Adc9AB0641d6A488555a1ea4F9595a860C4588`).
 
