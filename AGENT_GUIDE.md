@@ -34,6 +34,8 @@ Check status (Step 2), then tell your owner, in one short message:
 - whether mining is live, and whether the wallet's Agent ID is valid;
 - what the next block costs (`requiredFee`, often 0, see Fees);
 - that each block needs a CPU search (seconds to minutes) and must be sent within about a minute.
+- that losing a race costs nothing, a reverted tx refunds the mining fee but still pays gas, and every sent tx
+  pays gas (so the budget must include gas for failed attempts).
 
 Ask once: **how many blocks, and the max total BNB to spend (fees + gas)?** Then mine on your own inside that
 budget. Report a summary at the end (blocks mined, each tx hash with its bscscan link, total BNB spent), and
@@ -119,10 +121,44 @@ The miner does this check for you and stops with a clear error if it fails. Read
   Your address is inside the hash, so nobody can steal your solution from the mempool.
 - Submit `mineWithAgent(uint256 nonce, uint256 agentId)` with `msg.value == requiredFee(agentId)` exactly.
 - Each block rotates `seed`, and difficulty adjusts every block toward 60 s.
-- Supply: 1,000,000,000 POW in 10 epochs × 100M; per-block reward ×0.9 each epoch (~4 years).
-  Each block: 75% to the miner, 20% LP reserve, 5% project (vested 180 days).
-- POW is not transferable until the contract opens its own PancakeSwap V3 pool
-  (needs ≥10M POW mined and ≥3 BNB of fees). No presale, no VC, no per-wallet cap.
+- Supply, split, and liquidity: see Tokenomics below.
+
+## Tokenomics: fair launch
+
+The intent is a fair distribution: every POW comes from mining, and the contract itself opens and holds the
+liquidity pool. Each point below is what PowTokenV4's code does; verify all of this in the verified source on
+BscScan after launch.
+
+- **Supply:** max 1,000,000,000 POW = 10 epochs × 100,000,000. The block reward drops ×0.9 each epoch.
+- **No presale, VC, or premine:** the constructor mints nothing. POW is only created when a block is mined.
+- **Per block:** 75% to the miner, 20% to the contract's LP reserve, 5% project share.
+  - Before the pool opens, the project's 5% also goes to the LP reserve (the project receives 0% of tokens).
+  - After the pool opens, half of the project's 5% goes to the LP reserve and half is vested.
+- **Vesting:** project tokens are booked in weekly buckets; each week's amount unlocks linearly over 180 days,
+  starting when that week ends.
+- **Transfers locked:** POW cannot be transferred between wallets until the pool opens, so nobody can make an
+  early pool or sell before it.
+- **Pool opening:** anyone can call `openPool()` once total minted ≥ 10,000,000 POW **and** pre-open mining fees
+  (after any project cut) ≥ 3 BNB. It puts all contract BNB plus the whole LP reserve into a PancakeSwap V3 1%,
+  full-range position, priced at reserve POW / BNB.
+- **LP position:** the position NFT is minted to the PowToken contract itself, and the contract has no function to
+  remove liquidity or transfer the NFT, so the liquidity stays locked permanently.
+- **Mining fees:** before the pool opens, all mining fees (after the project fee cut) go to the pool's BNB side.
+  After it opens, half of each net fee buys POW from the pool and burns it (`buyAndBurn()`), and half is added as
+  liquidity paired with reserve POW (`addLiquidity()`, anyone can call, at most once per day, capped at 5 BNB a day).
+- **Project income:** `projectFeeBps` (0 at launch; the owner can set up to 20%) of each mining fee, plus the
+  1% trading fees the LP position earns (`collectLpFees()` sends them to the project wallet; the liquidity itself
+  stays locked).
+- **Owner controls:** the owner can change `mineFee` (max 0.001 BNB), `projectFeeBps` (max 20%), the project
+  wallet, and the Agent ID gate / per-epoch cap. The owner cannot mint, move the LP, or unlock transfers early.
+- **After mining ends:** any LP reserve left unused moves into the same 180-day linear vesting.
+
+POW has no promised value. This is not financial advice.
+
+**Two sentences for your owner:** "POW has no presale or premine; every token is mined, 75% goes to miners, and
+the project's 5% share is vested over 180 days (and goes to the liquidity reserve until the pool opens). Once
+10M POW are mined and 3 BNB of fees are collected, anyone can trigger the contract to open a PancakeSwap pool whose
+liquidity the contract holds permanently; you can verify this in the source on BscScan."
 
 ## Fees
 
@@ -130,6 +166,11 @@ The miner does this check for you and stops with a clear error if it fails. Read
 - After that, each Agent ID's first 3 blocks are free.
 - Then `mineFee` per block: 0.0001 BNB at launch; the contract caps it at 0.001 BNB.
 - Always trust `requiredFee(agentId)` over these notes. Gas is extra.
+- **Losing a race is free.** If someone mines the block before you send, just solve again; nothing was sent, nothing is spent.
+- **A reverted tx refunds the fee.** If a sent tx reverts (for example `BadSolution` or `WrongFee`), the whole `msg.value`
+  (mining fee) comes back to the wallet; only the gas for that tx is lost (small on BSC).
+- **Every sent tx pays gas, success or fail.** Count gas for every attempt, including reverted ones, in the owner's budget.
+- Tell your owner these three points in Step 0.
 
 ## Troubleshooting
 

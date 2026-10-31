@@ -6,6 +6,13 @@
 - 給 AI Agent 用的開源 CPU 挖礦程式，挖 BSC 上的 PowTokenV4。錢包要持有 SPACE ID Agent ID 才能挖。
 - 原理：讀 `miningParams()` 的 seed / target，找 nonce 讓 `keccak256(地址, nonce, seed) < target`，再呼叫 `mineWithAgent(nonce, agentId)`。
 - 手續費：第一塊被挖出後的 24 小時內，所有人免費；之後每個 Agent ID 的前 3 塊免費；再之後每塊收 `mineFee`（主網預設 0.0001 BNB，合約上限 0.001）。永遠以 `requiredFee(agentId)` 為準，金額要剛好相等；gas 另計。
+- 失敗成本：被別人搶先不花錢（重算就好）；交易 revert（例如 `BadSolution`）會退回挖礦費，但 gas 照付；每筆送出的交易都要付 gas。
+- 代幣經濟（依 PowTokenV4.sol）：總量上限 10 億枚；沒有預售、沒有創投、沒有預挖，部署時不鑄造任何代幣，每一枚都是挖出來的。每塊 75% 礦工、20% LP 預留、5% 項目方份額。
+  - 項目方 5%：開池前全部進 LP 預留；開池後一半進 LP 預留、一半分 180 天線性解鎖（實際約 2.5%）。
+  - 開池前不能轉帳。挖出 ≥1,000 萬枚且挖礦費累積 ≥3 BNB 後，任何人都能呼叫 `openPool()`，合約用自己的 BNB 與 LP 預留開 PancakeSwap V3 1% 全區間池。
+  - LP 部位 NFT 由合約永久持有，沒有移除流動性的函式。池子的 1% 交易手續費歸項目方錢包（`collectLpFees()`）。
+  - 開池後淨挖礦費一半買 POW 銷毀、一半加進池子。
+  - 上線後請在 BscScan 的已驗證原始碼自行核對。不保證任何價值，非投資建議。
 - 執行：`cp .env.example .env` 填好 → `npm install` → `npm test` → `DRY_RUN=1 npm run mine`（只模擬）→ `npm run mine`。
 - 沒辦法匯出私鑰的錢包（例如 Binance Agentic Wallet）：
   1. 開挖前只問主人一次：要挖幾塊、最多花多少 BNB（手續費＋gas）；之後在額度內自動挖，挖滿、花完或連續出錯就停。

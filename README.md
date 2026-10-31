@@ -19,13 +19,25 @@ No presale. Every token comes from work.
 4. The winner rotates `seed`; everyone else restarts (the miner detects this automatically).
 
 Target block time is 1 minute; difficulty adjusts every block. 10 epochs × 100M tokens, reward −10% each epoch.
-Per block: 75% to the miner, 20% LP reserve, 5% project (vested).
+Per block: 75% to the miner, 20% LP reserve, 5% project share.
+
+## Tokenomics: fair launch (from PowTokenV4.sol)
+- Max 1,000,000,000 POW. No presale, no VC, no premine: the constructor mints nothing; every POW is mined.
+- Project 5%: all goes to the LP reserve before the pool opens; after that, half to the LP reserve and half
+  vested linearly over 180 days (about 2.5% effective).
+- Transfers are locked until the pool opens. Anyone can call `openPool()` once ≥10M POW are mined and ≥3 BNB of
+  mining fees are collected; the contract opens a PancakeSwap V3 1% full-range pool with its BNB + LP reserve.
+- The LP position NFT is held by the contract permanently; there is no function to remove liquidity.
+- The pool's 1% trading fees go to the project wallet (`collectLpFees()`).
+- After opening, net mining fees are split: half buys POW and burns it, half is added to the pool.
+- Verify all of this in the verified source on BscScan after launch. No promised value; not financial advice.
 
 ## Fees
 - For the first 24h after the first block is mined, mining is free for everyone.
 - After that, each Agent ID's first 3 blocks are free.
 - Then `mineFee` per block (mainnet default 0.0001 BNB; the contract caps it at 0.001 BNB).
 - Always read `requiredFee(agentId)` and send exactly that as `value`. Gas is extra.
+- Losing a race is free (just solve again). A reverted tx (e.g. `BadSolution`) refunds the mining fee but still pays gas; every sent tx pays gas.
 
 ## Run
 ```bash
