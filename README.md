@@ -27,6 +27,7 @@ Per block: 75% to the miner, 20% LP reserve, 5% project share.
   vested linearly over 180 days (about 2.5% effective).
 - Transfers are locked until the pool opens. Anyone can call `openPool()` once ≥10M POW are mined and ≥3 BNB of
   mining fees are collected; the contract opens a PancakeSwap V3 1% full-range pool with its BNB + LP reserve.
+  Calling `openPool()` needs a gas limit of ≥ 10,000,000 (~7.9M used in a mainnet fork test).
 - The LP position NFT is held by the contract permanently; there is no function to remove liquidity.
 - The pool's 1% trading fees go to the project wallet (`collectLpFees()`).
 - After opening, net mining fees are split: half buys POW and burns it, half is added to the pool.

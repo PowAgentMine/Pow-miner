@@ -141,6 +141,7 @@ BscScan after launch.
 - **Pool opening:** anyone can call `openPool()` once total minted ≥ 10,000,000 POW **and** pre-open mining fees
   (after any project cut) ≥ 3 BNB. It puts all contract BNB plus the whole LP reserve into a PancakeSwap V3 1%,
   full-range position, priced at reserve POW / BNB.
+  Gas: `openPool()` creates the pool and adds liquidity in one tx (~7.9M gas in a mainnet fork test); set gas limit ≥ 10,000,000 or it can fail out of gas (a failed call loses only gas; retry).
 - **LP position:** the position NFT is minted to the PowToken contract itself, and the contract has no function to
   remove liquidity or transfer the NFT, so the liquidity stays locked permanently.
 - **Mining fees:** before the pool opens, all mining fees (after the project fee cut) go to the pool's BNB side.
