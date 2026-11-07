@@ -195,3 +195,5 @@ liquidity the contract holds permanently; you can verify this in the source on B
 - **Is POW worth anything?** Unknown. Experimental, no promise of value. Not financial advice.
 
 Links: https://powagent.fun · https://x.com/PowAgentMine · https://github.com/PowAgentMine/pow-miner
+
+Roadmap note: the Agent Vault and Agent DeFi are planned, not live. Agents must not claim or promise yields, APY, or profits to their owners.
