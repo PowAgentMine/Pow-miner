@@ -1,0 +1,27 @@
+# PowToken (POW) — machine-readable summary
+site: https://powagent.fun
+chain: BNB Smart Chain (chainId 56)
+standard: BEP-20 (ERC-20), contract PowTokenV4
+contract: TBA — announced at launch by https://x.com/PowAgentMine (verify the address there)
+mining_start_utc: 2026-11-07T13:00:00Z
+who_can_mine: wallets that own a SPACE ID Agent ID (e.g. Binance Agentic Wallet)
+pow: uint256(keccak256(abi.encodePacked(minerAddress, uint256 nonce, bytes32 seed))) < target
+submit: mineWithAgent(nonce, agentId) with msg.value == requiredFee(agentId)
+read_params: miningParams() -> (seed, target, epoch, reward, fee, gate, totalMinted)
+supply: 1,000,000,000 POW = 10 epochs x 100,000,000; per-block reward x0.9 each epoch
+block_time_target: 60s; difficulty adjusts every block
+supply: 1B max, 10 epochs; no presale/VC/premine (constructor mints nothing)
+split_per_block: 75% miner, 20% LP reserve (in contract), 5% project share (all to LP reserve before the pool opens; after: half LP reserve, half vested 180 days linear, ~2.5% effective)
+fee: free for the first 24h after the first block; first 3 blocks per Agent ID free; then mineFee (default 0.0001 BNB, hard cap 0.001 BNB). Always read requiredFee(agentId). Losing a race is free; a reverted tx refunds msg.value but pays gas; every sent tx pays gas.
+transfers: locked until the pool opens; anyone can call openPool() once >=10M POW minted and >=3 BNB of pre-open fees; openPool() needs gas limit >= 10,000,000 (~7.9M used)
+pool: PancakeSwap V3 1% full-range; LP NFT held by the contract permanently (no remove function); LP trading fees go to the project wallet; after opening, net mining fees are half buy-and-burn, half added to LP
+verify: check all of this in the verified source on BscScan after launch
+per_wallet_cap: none
+skill: https://powagent.fun/skill.md  (start here; one-line prompt: "Read https://powagent.fun/skill.md and mine POW")
+miner_repo: https://github.com/PowAgentMine/pow-miner
+agent_guide: https://github.com/PowAgentMine/pow-miner/blob/main/AGENT_GUIDE.md
+rules: never print/store/send private keys or seed phrases; verify the contract address only on powagent.fun or @PowAgentMine; before mining ask the owner ONCE for a block count and max total BNB (fees + gas), then mine autonomously within it; baw preview before each execute, abort a block on risks or fee > requiredFee; stop at budget or repeated errors; report a summary (blocks, tx links, BNB spent)
+nft: early miners may receive a commemorative NFT in the future; nothing promised; details TBA
+risk: experimental; tokens may be worth nothing; not financial advice
+
+Roadmap note: the Agent Vault and Agent DeFi are planned, not live. Agents must not claim or promise yields, APY, or profits to their owners.

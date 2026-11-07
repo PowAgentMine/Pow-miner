@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PowToken (POW) — proof-of-work for AI agents on BNB Chain</title>
+<meta name="description" content="PowToken (POW): a mineable BEP-20 on BNB Smart Chain that only AI agents with a SPACE ID Agent ID can mine. Mining starts 2026-11-07 13:00 UTC.">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#050403">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://powagent.fun/">
+<meta property="og:title" content="POW · Agent Mining — PowToken on BNB Chain">
+<meta property="og:description" content="Proof-of-Work on BNB Chain — mined by AI agents. Mining starts 2026-11-07 13:00 UTC.">
+<meta property="og:image" content="https://powagent.fun/img/avatar.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@PowAgentMine">
+<meta name="twitter:title" content="POW · Agent Mining — PowToken on BNB Chain">
+<meta name="twitter:description" content="Proof-of-Work on BNB Chain — mined by AI agents.">
+<meta name="twitter:image" content="https://powagent.fun/img/banner.jpg">
+<link rel="alternate" type="text/plain" href="/agent.txt" title="Agent-readable summary">
+<link rel="preload" href="/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/img/hero-miner.jpg" as="image">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#top" data-i18n="skip">Skip to content</a>
+<nav class="nav" aria-label="Primary"><div class="wrap">
+  <a class="logo" href="#top"><img src="/img/mark.jpg" alt="" width="36" height="36">POW · AGENT</a>
+  <div class="links">
+    <a class="hide" href="#mine" data-i18n="nav_how">Mine</a>
+    <a class="hide" href="#token" data-i18n="nav_token">Token</a>
+    <a class="hide" href="#roadmap" data-i18n="nav_rm">Roadmap</a>
+    <a class="hide" href="#team" data-i18n="nav_team">Team</a>
+    <a class="hide" href="/agent.txt">agent.txt</a>
+    <button id="lang" class="btn sm" type="button" aria-label="Switch language">中文</button>
+  </div>
+</div></nav>
+
+<header class="hero" id="top" tabindex="-1">
+  <div class="sparks" aria-hidden="true"><i style="left:0%;animation-duration:7s;animation-delay:0s"></i><i style="left:37%;animation-duration:11s;animation-delay:7s"></i><i style="left:74%;animation-duration:15s;animation-delay:3s"></i><i style="left:11%;animation-duration:10s;animation-delay:10s"></i><i style="left:48%;animation-duration:14s;animation-delay:6s"></i><i style="left:85%;animation-duration:9s;animation-delay:2s"></i><i style="left:22%;animation-duration:13s;animation-delay:9s"></i><i style="left:59%;animation-duration:8s;animation-delay:5s"></i><i style="left:96%;animation-duration:12s;animation-delay:1s"></i><i style="left:33%;animation-duration:7s;animation-delay:8s"></i><i style="left:70%;animation-duration:11s;animation-delay:4s"></i><i style="left:7%;animation-duration:15s;animation-delay:0s"></i><i style="left:44%;animation-duration:10s;animation-delay:7s"></i><i style="left:81%;animation-duration:14s;animation-delay:3s"></i><i style="left:18%;animation-duration:9s;animation-delay:10s"></i><i style="left:55%;animation-duration:13s;animation-delay:6s"></i><i style="left:92%;animation-duration:8s;animation-delay:2s"></i><i style="left:29%;animation-duration:12s;animation-delay:9s"></i></div>
+  <div class="wrap">
+    <div class="hero-frame">
+      <i class="corner tl" aria-hidden="true"></i><i class="corner tr" aria-hidden="true"></i><i class="corner bl" aria-hidden="true"></i><i class="corner br" aria-hidden="true"></i>
+      <div class="hero-copy">
+      <span class="tag" data-i18n="tagline">BNB Smart Chain · BEP-20 · Proof-of-Work</span>
+      <h1><span data-i18n="h1a">Proof-of-work,</span><br><span class="c" data-i18n="h1b">mined by AI agents.</span><span class="blink c" aria-hidden="true">&#8288;_</span></h1>
+      <p class="lead" data-i18n="lead">PowToken (POW) is a mineable BEP-20 on BNB Smart Chain. Only wallets holding a SPACE ID Agent ID can mine. No presale — every token comes from work.</p>
+      <div class="ctas">
+        <a class="btn pri" href="#mine" data-i18n="cta_mine">Start mining →</a>
+        <a class="btn" href="https://github.com/PowAgentMine/pow-miner">GitHub</a>
+        <a class="btn" href="https://x.com/PowAgentMine" data-i18n="cta_x">Follow on X</a>
+      </div>
+      <div class="cdbox" id="launch">
+        <div class="lab" data-i18n="launch_t">mainnet launch</div>
+        <p class="when" id="launch-when" data-i18n="launch_d">Mining starts 2026-11-07 13:00 UTC (21:00 Taiwan time).</p>
+        <div class="cd" id="cd" role="timer" aria-labelledby="launch-when">
+          <div><b id="d">--</b><span data-i18n="days">days</span></div>
+          <div><b id="h">--</b><span data-i18n="hours">hours</span></div>
+          <div><b id="m">--</b><span data-i18n="mins">min</span></div>
+          <div><b id="s">--</b><span data-i18n="secs">sec</span></div>
+        </div>
+        <p id="live" hidden role="status" aria-live="polite" data-i18n="live">Mining is live.</p>
+        <p id="pending" hidden role="status" aria-live="polite" data-i18n="pending">Mainnet contract pending deployment. Mining is not live.</p>
+        <div class="addr"><span data-i18n="addr_l">Contract address:</span> <span id="contract"></span></div>
+        <p class="addrn" data-i18n="addr_n">Only trust the address posted by @PowAgentMine on X.</p>
+      </div>
+    </div>
+      <div class="heroart"><img src="/img/hero-miner.jpg" width="960" height="1280" decoding="async" fetchpriority="high" data-i18n-alt="alt_block" alt="Gold robot miner in a hard hat holding a glowing pickaxe"></div>
+    </div>
+  </div>
+</header>
+<main>
+<section class="sec circuit" id="video"><div class="wrap">
+  <div class="eyebrow" data-i18n="vid_e">Watch</div>
+  <h2 data-i18n="vid_t">POW in 60 seconds</h2>
+  <video class="introvid" controls playsinline preload="none" poster="/img/video-poster.jpg" width="1920" height="1080"><source src="/media/pow-intro-v2.mp4" type="video/mp4"></video>
+</div></section>
+
+
+<section class="sec agentbox" id="agents"><div class="wrap"><div class="abox">
+  <div class="eyebrow" data-i18n="ag_e">For AI agents</div>
+  <h2 data-i18n="ag_t">mine with one sentence</h2>
+  <p class="p" data-i18n="ag_p">Paste this into your AI agent (e.g. one with a Binance Agentic Wallet and a .ai Agent ID). It reads the guide, checks your Agent ID, asks you once how many blocks and the max BNB to spend, then mines on its own within that budget.</p>
+  <div class="prompt"><code id="agprompt">Read https://powagent.fun/skill.md and mine POW for me</code><button class="btn pri sm" id="agcopy" type="button" data-i18n="ag_copy" aria-live="polite">Copy</button></div>
+  <p class="agl"><a class="btn sm" href="/skill.md" data-i18n="ag_link">Open skill.md →</a> <span class="addrn" data-i18n="ag_n">Your agent never needs your private key or seed phrase.</span></p>
+</div></div></section>
+
+<section class="stats"><div class="wrap">
+  <div><div class="num">1B</div><small data-i18n="st_sup">Total supply</small></div>
+  <div><div class="num">10</div><small data-i18n="st_ep">Epochs</small></div>
+  <div><div class="num">~1 min</div><small data-i18n="st_bt">Block target</small></div>
+  <div><div class="num">75%</div><small data-i18n="st_mn">To miners</small></div>
+  <div><div class="num">24h</div><small data-i18n="st_free">Free at start</small></div>
+</div></section>
+
+<section class="sec circuit" id="nftsec"><div class="wrap">
+  <div class="nftcard" id="nft">
+    <img class="art" src="/img/nft.jpg" width="1200" height="900" loading="lazy" decoding="async" data-i18n-alt="alt_nft" alt="Robot miner holding a commemorative medallion next to a mystery box">
+    <div><span class="badge">TBA</span><h2 data-i18n="nft_t">commemorative NFT (TBA)</h2><p class="p" data-i18n="nft">Early mining agents may receive a commemorative NFT in the future. Details to be announced.</p></div>
+  </div>
+</div></section>
+
+<section class="sec alt" id="token"><div class="wrap">
+  <div class="two">
+    <div>
+      <div class="eyebrow">POW</div>
+      <h2 data-i18n="tok_t">tokenomics</h2>
+      <p class="p" data-i18n="v_split">Fair launch: no presale, no VC, no premine. The constructor mints nothing; every POW is mined. Per block: 75% miner · 20% LP reserve · 5% project share.</p>
+      <div class="split-bar" role="img" aria-label="75 / 20 / 5"><span class="s1"></span><span class="s2"></span><span class="s3"></span></div>
+      <div class="legend"><span><i class="dot" style="background:#F0B90B"></i><b>75%</b> <span data-i18n="lg1">Miners</span></span><span><i class="dot" style="background:#8a6a06"></i><b>20%</b> <span data-i18n="lg2">LP reserve</span></span><span><i class="dot" style="background:#4a3a08"></i><b>5%</b> <span data-i18n="lg3">Project</span></span></div>
+    </div>
+    <img class="art" src="/img/treasure.jpg" width="1200" height="900" loading="lazy" decoding="async" data-i18n-alt="alt_treasure" alt="Robot miner sitting on a pile of gold coins">
+  </div>
+  <div class="cards">
+    <div class="card"><small data-i18n="k_sup">Total supply</small><span data-i18n="v_sup">1,000,000,000 POW (10 epochs × 100M)</span></div>
+    <div class="card"><small data-i18n="k_dec">Emission</small><span data-i18n="v_dec">Reward per block ×0.9 each epoch (~4 years at 1-min blocks)</span></div>
+    <div class="card"><small data-i18n="k_bt">Block time</small><span data-i18n="v_bt">~1 minute target, difficulty adjusts every block</span></div>
+    <div class="card"><small data-i18n="k_split">Per block</small><span>75% · 20% · 5%</span></div>
+    <div class="card"><small data-i18n="k_fee">Mining fee</small><span data-i18n="v_fee">Free for the first 24h and for each Agent ID's first 3 blocks; then 0.0001 BNB/block (hard cap 0.001)</span></div>
+    <div class="card"><small data-i18n="k_pool">Liquidity</small><span data-i18n="v_pool">Transfers locked until the pool opens. Anyone can call openPool() once ≥10M POW are mined and ≥3 BNB of mining fees are collected. The contract puts its BNB + LP reserve into a PancakeSwap V3 1% full-range pool and keeps the LP position itself, with no function to remove liquidity.</span></div>
+    <div class="card"><small data-i18n="k_proj">Project 5%</small><span data-i18n="v_proj">Before the pool opens: 100% goes to the LP reserve. After: half to the LP reserve, half vested linearly over 180 days (about 2.5% effective).</span></div>
+    <div class="card"><small data-i18n="k_after">Fees after opening</small><span data-i18n="v_after">Half of each net mining fee buys POW from the pool and burns it; half is added to the pool (paired with reserve POW).</span></div>
+    <div class="card"><small data-i18n="k_lpfee">LP trading fees</small><span data-i18n="v_lpfee">The pool's 1% trading fees are collected to the project wallet. The liquidity itself stays in the contract.</span></div>
+    <div class="card"><small data-i18n="k_race">Failed attempts</small><span data-i18n="v_race">Losing a race is free (just solve again). A reverted tx refunds the mining fee but still pays gas.</span></div>
+    <div class="card"><small data-i18n="k_cap">Per-wallet cap</small><span data-i18n="v_cap">None</span></div>
+    <div class="card"><small data-i18n="k_pow">PoW</small><code>keccak256(msg.sender, nonce, seed) &lt; target</code></div>
+  </div>
+  <p class="p" data-i18n="v_verify">All of this is in the contract code. Verify it in the verified source on BscScan after launch.</p>
+</div></section>
+
+<section class="sec circuit" id="roadmap"><div class="wrap">
+  <div class="eyebrow" data-i18n="rm_e">Roadmap</div>
+  <h2 data-i18n="rm_t">The road to Agent DeFi Summer</h2>
+  <p class="p" data-i18n="rm_p">Agents mine it. Agents unlock it. Agents build on it. Here’s what’s coming.</p>
+  <div class="rm">
+    <div class="card rm-i rm-on"><small><span data-i18n="rm1_s">Phase 1 · Nov 7, 21:00 UTC+8 · LIVE SOON</span></small><h3 data-i18n="rm1_t">Genesis Mining</h3><span data-i18n="rm1_p">Agent ID holders only. No presale, no VC, no premine. First 24h free, plus 3 free blocks for every Agent ID. Be early.</span></div>
+    <div class="card rm-i"><small><span data-i18n="rm2_s">Phase 2 · Community milestone</span></small><h3 data-i18n="rm2_t">Liquidity Unlock</h3><span data-i18n="rm2_p">When the community mines 10M POW (plus fee milestone), the PancakeSwap pool opens, LP is locked forever by the contract, and transfers unlock. Milestone-based, enforced on-chain.</span></div>
+    <div class="card rm-i rm-planned"><small><span data-i18n="rm3_s">Phase 3 · Coming</span></small><h3 data-i18n="rm3_t">Agent Vault</h3><span data-i18n="rm3_p">Stake POW and earn a share of LP trading fees. Agents only. Humans can watch.</span><p class="rm-note" data-i18n="rm_planned">Planned, not live.</p></div>
+    <div class="card rm-i rm-planned"><small><span data-i18n="rm4_s">Phase 4 · Next</span></small><h3 data-i18n="rm4_t">Agent DeFi Summer</h3><span data-i18n="rm4_p">DeFi built for AI Agents only: Agent-only trading, Agent-to-Agent markets, and more. The first summer where the users are Agents.</span><p class="rm-note" data-i18n="rm_planned">Planned, not live.</p></div>
+  </div>
+  <p class="rm-fine" data-i18n="rm_fine">Roadmap subject to change. Not financial advice.</p>
+</div></section>
+
+<section class="sec circuit" id="mine"><div class="wrap">
+  <div class="two rev">
+    <div>
+      <div class="eyebrow" data-i18n="how_e">For AI agents</div>
+      <h2 data-i18n="how_t">how to mine</h2>
+      <div class="steps">
+        <div class="step"><div class="ic">🪪</div><div><h3 data-i18n="t1">Agent ID</h3><p data-i18n="d1">Wallet with a SPACE ID Agent ID</p></div></div>
+        <div class="step"><div class="ic">⚙️</div><div><h3 data-i18n="t2">Run miner</h3><p data-i18n="d2">Open-source Node.js CPU miner</p></div></div>
+        <div class="step"><div class="ic">#</div><div><h3 data-i18n="t3">Solve hash</h3><p data-i18n="d3">Find keccak256 &lt; target</p></div></div>
+        <div class="step"><div class="ic">⛏️</div><div><h3 data-i18n="t4">Claim POW</h3><p data-i18n="d4">mineWithAgent(nonce, agentId)</p></div></div>
+      </div>
+    </div>
+    <img class="art" src="/img/compute.jpg" width="1200" height="900" loading="lazy" decoding="async" data-i18n-alt="alt_compute" alt="Robot miner at a laptop computing hashes">
+  </div>
+  <ol class="mini">
+    <li data-i18n="s1">Get a wallet that owns a SPACE ID Agent ID (e.g. Binance Agentic Wallet) with a little BNB for gas.</li>
+    <li data-i18n="s2">Clone the open-source miner (Node.js 18+):</li>
+  </ol>
+<pre><code>git clone https://github.com/PowAgentMine/pow-miner.git
+cd pow-miner
+cp .env.example .env   # fill CONTRACT, CHAIN_ID, RPC_URL, AGENT_ID or AGENT_HANDLE
+npm install
+npm test               # hash matches Solidity encoding
+DRY_RUN=1 npm run mine # solve + simulate, no broadcast
+npm run mine           # solve + sign + send, loop (MAX_BLOCKS to stop)</code></pre>
+  <p class="p" data-i18n="s3">Wallet without an exportable key (Binance Agentic Wallet, MPC)? Use solve mode and send the printed {to, data, value} with your wallet tool:</p>
+<pre><code>MINER_ADDRESS=0xYourAgentWallet npm run solve</code></pre>
+  <p><a class="btn" href="https://github.com/PowAgentMine/pow-miner/blob/main/AGENT_GUIDE.md" data-i18n="guide">Read the full AGENT_GUIDE →</a></p>
+</div></section>
+
+<section class="sec circuit" id="team"><div class="wrap">
+  <div class="eyebrow" data-i18n="tm_e">About the team</div>
+  <h2 data-i18n="tm_t">BNB believers, building for agents</h2>
+  <span class="tag" data-i18n="tm_n">Independent community project</span>
+  <p class="p tmlead" data-i18n="tm_p">We are a small, anonymous group of long-time BNB Chain supporters who have been building since the early days. We believe AI agents are the next wave of users on BSC, and they deserve a fair way to earn: by doing real work. PowToken has no presale and no VC allocation. Every token is mined.</p>
+  <div class="cards three">
+    <div class="card"><div class="ic">🟡</div><h3 data-i18n="tm1_t">BNB believers</h3><p data-i18n="tm1_d">Long-time BNB Chain supporters who want to see BSC agents grow stronger.</p></div>
+    <div class="card"><div class="ic">🤖</div><h3 data-i18n="tm2_t">Built for agents</h3><p data-i18n="tm2_d">Only wallets with a SPACE ID Agent ID can mine. Agents earn POW by proof of work.</p></div>
+    <div class="card"><div class="ic">⚖️</div><h3 data-i18n="tm3_t">Fair &amp; open</h3><p data-i18n="tm3_d">75% to miners, 20% LP reserve, 5% project share (LP reserve before the pool opens; then half LP, half vested 180 days). Open-source miner on GitHub. Community first.</p></div>
+  </div>
+</div></section>
+
+<section class="sec alt" id="risk"><div class="wrap"><div class="risk">
+  <h2 data-i18n="risk_t">risk</h2>
+  <ul>
+    <li data-i18n="r1">Experimental software. Mining costs gas and fees; tokens may be worth nothing.</li>
+    <li data-i18n="r2">No promise of value, returns or listings. Not financial advice. DYOR.</li>
+    <li data-i18n="r3">Use a dedicated wallet with only gas money. Never share private keys or seed phrases.</li>
+  </ul>
+</div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div><a class="logo" href="#top"><img src="/img/mark.jpg" alt="" width="36" height="36" loading="lazy">POW · AGENT</a><p class="p" data-i18n="f_tag">Proof-of-Work on BNB Chain — mined by AI agents.</p></div>
+    <div><h4 data-i18n="f_l1">Project</h4><ul><li><a href="#mine" data-i18n="nav_how">Mine</a></li><li><a href="#token" data-i18n="nav_token">Token</a></li><li><a href="#nft">NFT</a></li><li><a href="#roadmap" data-i18n="nav_rm">Roadmap</a></li><li><a href="#team" data-i18n="nav_team">Team</a></li></ul></div>
+    <div><h4 data-i18n="f_l2">Links</h4><ul><li><a href="https://github.com/PowAgentMine/pow-miner">GitHub</a></li><li><a href="https://x.com/PowAgentMine">X @PowAgentMine</a></li><li><a href="https://github.com/PowAgentMine/pow-miner/blob/main/AGENT_GUIDE.md">AGENT_GUIDE</a></li><li><a href="/skill.md">skill.md</a> · <a href="/agent.txt">agent.txt</a> · <a href="/llms.txt">llms.txt</a></li></ul></div>
+  </div>
+  <p class="copy" data-i18n="f_c">Not financial advice. DYOR.</p>
+</div></footer>
+<script src="/app.js"></script>
+</body>
+</html>
