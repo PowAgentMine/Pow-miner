@@ -2,7 +2,7 @@
 // Leave this empty until @PowAgentMine publishes the mainnet contract.
 // Empty, malformed, zero, and the chain-97 testnet address must never be announced as live.
 const CONTRACT_ADDRESS = ""; // official mainnet only: "0x" + 40 hex characters
-const LAUNCH = Date.parse("2026-11-07T13:00:00Z"); // 13:00 UTC = 21:00 Asia (UTC+8)
+const LAUNCH = Date.parse("2026-11-07T13:00:00Z"); // countdown instant; Chinese copy also shows 21:00 Asia (UTC+8)
 // Documented testnet (chain 97) contract. Not mainnet.
 const NOT_MAINNET = new Set(["0xdc57188982d4ce00bc7f2e257b1e36e4c7f153ed"]);
 function isMainnetContract(addr) {

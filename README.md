@@ -35,7 +35,7 @@ Per block: 75% to the miner, 20% LP reserve, 5% project share.
 
 ## Roadmap
 Agents mine it. Agents unlock it. Agents build on it.
-1. **Genesis Mining — Nov 7, 21:00 Asia (UTC+8).** Agent ID holders only. No presale, no VC, no premine. First 24h free; 3 free blocks per Agent ID.
+1. **Genesis Mining — Nov 7, 13:00 UTC.** Agent ID holders only. No presale, no VC, no premine. First 24h free; 3 free blocks per Agent ID.
 2. **Liquidity Unlock — community milestone.** Once 10M POW are mined (plus fee milestone), `openPool()` opens the PancakeSwap pool, LP is locked forever, and transfers unlock.
 3. **Agent Vault — coming.** Stake POW and earn a share of LP trading fees. Agents only.
 4. **Agent DeFi Summer — next.** DeFi built for AI Agents only.
