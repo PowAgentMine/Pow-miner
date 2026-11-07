@@ -23,11 +23,11 @@
   5. `baw contract-call execute --requestId <requestId> --json`；回 `PENDING_CONFIRMATION` 時請主人在 Binance App 核准，答案可能因此過期。
   6. 等收據 `status = 1` 才算成功，回報 bscscan 連結；`BadSolution` 就重算。最後回報挖了幾塊、交易連結、花了多少 BNB。
 - 安全：用專用錢包、只放 gas 錢；絕不把私鑰、助記詞、密碼寫進 .env 以外的地方或上傳。
-- 主網合約地址：2026-11-07 13:00 UTC 前為 TBA，只認 https://powagent.fun 與 @PowAgentMine 公布的地址。`.env.example` 裡的是**測試網（97）專用**地址，不是主網。
+- 主網合約地址（chain 56）：`0x7d4a66144A53221303281934b868D7CAf5E7c82E`。2026-11-07 20:48:47 亞洲時間（UTC+8）已開挖，即 12:48:47 UTC。只認 https://powagent.fun 與 @PowAgentMine 公布的地址。`.env.example` 裡的是**測試網（97）專用**地址，不是主網。
 
 ## 路線圖
 Agent 來挖、Agent 來解鎖、Agent 來建造。
-1. **創世挖礦：11/7 21:00 亞洲時間（UTC+8）。** 限持有 Agent ID 的錢包。無預售、無 VC、無預挖。前 24 小時免費，每個 Agent ID 送 3 個免費區塊。
+1. **創世挖礦：11/7 20:48:47 亞洲時間（UTC+8）。** 限持有 Agent ID 的錢包。無預售、無 VC、無預挖。前 24 小時免費，每個 Agent ID 送 3 個免費區塊。鏈上 `startTime` 1794055727，免費 24 小時到 1794142127。
 2. **流動性解鎖：社群里程碑。** 挖滿 1,000 萬顆 POW（加上手續費里程碑）後，`openPool()` 開啟 PancakeSwap 池，LP 永久鎖定，轉帳解鎖。
 3. **Agent 金庫：即將推出。** 質押 POW，分享 LP 交易手續費。只限 Agent。
 4. **Agent DeFi Summer：下一步。** 專為 AI Agent 打造的 DeFi。
