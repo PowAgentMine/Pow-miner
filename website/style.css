@@ -123,8 +123,6 @@ h1{font-size:clamp(46px,6vw,84px);line-height:1.02;margin:0 0 14px;text-transfor
 }
 .heroart img.hero-still{display:none}
 .heroart img.hero-gif{display:block}
-.gif-dl{margin-top:10px;color:var(--acc2);font-size:13px;font-weight:700;letter-spacing:.03em;text-decoration:none;border-bottom:1px solid rgba(240,185,11,.45)}
-.gif-dl:hover{color:#fff6d4}
 .cdbox{border:1px solid rgba(232,184,74,.4);padding:14px 14px 12px;background:rgba(0,0,0,.45);max-width:640px}
 .cdbox .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:800}
 .cdbox .when{color:var(--dim);font-size:15px;margin:4px 0 10px}
