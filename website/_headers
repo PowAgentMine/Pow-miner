@@ -2,6 +2,18 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/style.css
+  Cache-Control: public, max-age=0, must-revalidate
+/app.js
+  Cache-Control: public, max-age=0, must-revalidate
+/img/hero-miner.jpg
+  Cache-Control: public, max-age=0, must-revalidate
+/img/hero-robot-loop.gif
+  Cache-Control: public, max-age=86400
 /agent.txt
   Content-Type: text/plain; charset=utf-8
 /skill.md
