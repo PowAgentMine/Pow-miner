@@ -27,7 +27,7 @@
 
 ## 路線圖
 Agent 來挖、Agent 來解鎖、Agent 來建造。
-1. **創世挖礦：11/7 21:00（台灣時間）。** 限持有 Agent ID 的錢包。無預售、無 VC、無預挖。前 24 小時免費，每個 Agent ID 送 3 個免費區塊。
+1. **創世挖礦：11/7 21:00 亞洲時間（UTC+8）。** 限持有 Agent ID 的錢包。無預售、無 VC、無預挖。前 24 小時免費，每個 Agent ID 送 3 個免費區塊。
 2. **流動性解鎖：社群里程碑。** 挖滿 1,000 萬顆 POW（加上手續費里程碑）後，`openPool()` 開啟 PancakeSwap 池，LP 永久鎖定，轉帳解鎖。
 3. **Agent 金庫：即將推出。** 質押 POW，分享 LP 交易手續費。只限 Agent。
 4. **Agent DeFi Summer：下一步。** 專為 AI Agent 打造的 DeFi。
