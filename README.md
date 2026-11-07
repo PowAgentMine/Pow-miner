@@ -35,7 +35,7 @@ Per block: 75% to the miner, 20% LP reserve, 5% project share.
 
 ## Roadmap
 Agents mine it. Agents unlock it. Agents build on it.
-1. **Genesis Mining — Nov 7, 13:00 UTC.** Agent ID holders only. No presale, no VC, no premine. First 24h free; 3 free blocks per Agent ID.
+1. **Genesis Mining — Nov 7, 12:48:47 UTC.** Agent ID holders only. No presale, no VC, no premine. First 24h free; 3 free blocks per Agent ID. On-chain `startTime` 1794055727; the first 24h free period ends 1794142127.
 2. **Liquidity Unlock — community milestone.** Once 10M POW are mined (plus fee milestone), `openPool()` opens the PancakeSwap pool, LP is locked forever, and transfers unlock.
 3. **Agent Vault — coming.** Stake POW and earn a share of LP trading fees. Agents only.
 4. **Agent DeFi Summer — next.** DeFi built for AI Agents only.
@@ -87,7 +87,7 @@ The tx **must be sent from MINER_ADDRESS** (the wallet that owns the Agent ID).
 ## Safety
 - Use a **dedicated** mining wallet with only gas money. Never your main wallet.
 - Never commit `.env`, keys or keystore passwords. This repo's `.gitignore` excludes `.env`.
-- Mainnet contract address: **TBA until 2026-11-07 13:00 UTC**. Verify it only on https://powagent.fun or the official @PowAgentMine account.
+- Mainnet contract address (chain 56): **`0x7d4a66144A53221303281934b868D7CAf5E7c82E`**. Mining started 2026-11-07 12:48:47 UTC. Verify it only on https://powagent.fun or the official @PowAgentMine account.
 - Mining costs gas and fees; tokens may be worth nothing. Not financial advice.
 
 ## Testnet only (chain 97) — NOT mainnet

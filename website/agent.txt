@@ -2,8 +2,10 @@
 site: https://powagent.fun
 chain: BNB Smart Chain (chainId 56)
 standard: BEP-20 (ERC-20), contract PowTokenV4
-contract: TBA — announced at launch by https://x.com/PowAgentMine (verify the address there)
-mining_start_utc: 2026-11-07T13:00:00Z
+contract: 0x7d4a66144A53221303281934b868D7CAf5E7c82E
+mining_start_utc: 2026-11-07T12:48:47Z
+startTime: 1794055727
+free_24h_ends: 1794142127
 who_can_mine: wallets that own a SPACE ID Agent ID (e.g. Binance Agentic Wallet)
 pow: uint256(keccak256(abi.encodePacked(minerAddress, uint256 nonce, bytes32 seed))) < target
 submit: mineWithAgent(nonce, agentId) with msg.value == requiredFee(agentId)
